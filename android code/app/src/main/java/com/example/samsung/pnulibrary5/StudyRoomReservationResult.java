@@ -76,16 +76,13 @@ class StudyRoomReservationResult extends AppCompatActivity {
                         if(v.equals(bIDs[i])){
                             identity=i;
                             urladdString = sIDs[i].getText().toString();
-                            Log.i("urlString","http://164.125.35.32/temp/kyo/idcheck.php?id="+urladdString);
-                            loadHtml("http://164.125.35.32/temp/kyo/idcheck.php?id="+urladdString);
+                            loadHtml("localhost/idcheck.php?id="+urladdString);
                             break;
                         }
                     }
                     while(sb.length()==0) ;
 
                     String sbString = sb.toString();
-                    Log.i("resultid",sbString);
-                    Log.i("resultid2",String.valueOf(!sbString.equals("0\n")));
                     if(!sbString.equals("0\n") && identity != -1){ //exsist id
                         boolean check=true;
                         for(int i=0;i<identity;i++){ // no duplication
@@ -113,7 +110,6 @@ class StudyRoomReservationResult extends AppCompatActivity {
         Intent intent = getIntent();
         inputString = intent.getStringExtra("Text"); //241.60415
         text.setText(inputString);
-        Log.i("testInputText",inputString);
 
         btn.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -130,13 +126,11 @@ class StudyRoomReservationResult extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //http://164.125.35.32/temp/kyo/studyroomreservation.php?studyRoomNumber=242&studyRoomReservationTime=170614&user1=201224501&user2=201224502&user3=201224503&user4=201224504&user5=201224505
-                Log.i("resultStringTest",inputString.substring(0,3)+" "+inputString.substring(4)+" "+sIDs[0].getText() + " "+ sIDs[1].getText()+" "+sIDs[2].getText()+" "+sIDs[3].getText()+ " "+sIDs[4].getText());
 
-                loadHtml("http://164.125.35.32/temp/kyo/studyroomreservation.php?studyRoomNumber="+inputString.substring(0,3)+"&studyRoomReservationTime="+inputString.substring(4)+"&user1="+sIDs[0].getText()+"&user2="+sIDs[1].getText()+"&user3="+sIDs[2].getText()+"&user4="+sIDs[3].getText()+"&user5="+sIDs[4].getText());
+                loadHtml("localhost/studyroomreservation.php?studyRoomNumber="+inputString.substring(0,3)+"&studyRoomReservationTime="+inputString.substring(4)+"&user1="+sIDs[0].getText()+"&user2="+sIDs[1].getText()+"&user3="+sIDs[2].getText()+"&user4="+sIDs[3].getText()+"&user5="+sIDs[4].getText());
                 while(sb.length()==0) ;
 
                 String sbString = sb.toString();
-                Log.i("sbStringTest",sbString);
                 if(sbString.equals("0\n")){
                     Toast.makeText(StudyRoomReservationResult.this,"Success",Toast.LENGTH_SHORT);
                 }
@@ -187,13 +181,3 @@ class StudyRoomReservationResult extends AppCompatActivity {
         t.start(); // 쓰레드 시작
     }
 }
-
-/*
-http://164.125.35.32/temp/kyo/studyroomreservation.php?studyRoomNumber=242&studyRoomReservationTime=170614&user1=201224501&user2=201224502&user3=201224503&user4=201224504&user5=201224505
-
-http://164.125.35.32/temp/kyo/studyroomcheckid.php?id=201224501
-
-http://164.125.35.32/temp/kyo/studyroomcheck.php
-
-http://164.125.35.32/temp/kyo/idcheck.php?id=201224521
- */
