@@ -125,8 +125,7 @@ class StudyRoomReservationResult extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //http://164.125.35.32/temp/kyo/studyroomreservation.php?studyRoomNumber=242&studyRoomReservationTime=170614&user1=201224501&user2=201224502&user3=201224503&user4=201224504&user5=201224505
-
+                
                 loadHtml("localhost/studyroomreservation.php?studyRoomNumber="+inputString.substring(0,3)+"&studyRoomReservationTime="+inputString.substring(4)+"&user1="+sIDs[0].getText()+"&user2="+sIDs[1].getText()+"&user3="+sIDs[2].getText()+"&user4="+sIDs[3].getText()+"&user5="+sIDs[4].getText());
                 while(sb.length()==0) ;
 

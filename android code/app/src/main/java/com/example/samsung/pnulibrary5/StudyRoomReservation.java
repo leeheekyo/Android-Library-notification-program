@@ -225,7 +225,6 @@ public class StudyRoomReservation extends ActionBarActivity {
         repaint();
 
 
-        //loadHtml("http://164.125.35.32/temp/kyo/studyroomcheck.php");
 
 
 
@@ -328,19 +327,13 @@ public class StudyRoomReservation extends ActionBarActivity {
         sb = new StringBuilder();
 
         loadHtml("localhost/studyroomcheckid.php?id="+myStudentID);
-       // Log.i("StringCHeckId","http://164.125.35.32/temp/kyo/studyroomcheckid.php?id="+myStudentID);
         while(sb.length()==0) ;
 
         sbstring = sb.toString();
         sbstrings = sbstring.split("/");
         c = sbstrings.length-1;
         for(i=0; i<c; i++) {
-            //Log.i("testString1",daySelect+" "+sbstrings[i].substring(4, sbstrings[i].length() - 2));
-
             if (daySelect==Integer.valueOf(sbstrings[i].substring(4, sbstrings[i].length() - 2))) {
-                // 242.60516
-                //Log.i("teststring2", sbstrings[i].substring(0, 3) + sbstrings[i].substring(4));
-
                 int tCountone = -1;
                 if (sbstrings[i].substring(0, 3).equals("241")) {
                     tCountone = 0;
@@ -349,7 +342,6 @@ public class StudyRoomReservation extends ActionBarActivity {
                 } else if (sbstrings[i].substring(0, 3).equals("243")) {
                     tCountone = 2;
                 }
-                //Log.i("testnumber", i + " " + tCountone);
 
 
                 // 603 604 605 // 60516
